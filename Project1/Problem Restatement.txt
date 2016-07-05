@@ -1,0 +1,44 @@
+		CS356 Operating System 
+	Project 1: Android Process Tree
+Name: Zhengtian Xu 		StudentID: 5140309178
+-----------------------------------------------
+			Problem Description
+
+
+##  Problem 1 Write a new system call in Linux.
+1.  The system call you write should take two arguments
+    and return the process tree information in a depth-
+    first-search (DFS) order.
+2.  Each system call must be assigned a number. Your
+    system call should be assigned number 356.
+
+##  Problem 2 Test your new system call
+1.  Write a simple C program which calls ptree
+2.  Print the entire process tree (in DFS order)
+    using tabs to indent children with respect to
+    their parents.
+
+##  Problem 3 
+1.  Generate a new process and output
+    “StudentIDParent” with PID, then
+    generates its children process output
+    “StudentIDChild” with PID.
+2.  Use execl to execute ptree in the child
+    process,show the relationship between
+    above two process.
+
+##  Problem 4 Burger Buddies Problem
+1.  Cooks, Cashiers, and Customers are each modeled as athread.
+    Cashiers sleep until a customer is present.
+2.  A Customer approaching a cashier can start the order
+    process.
+3.  A Customer cannot order until the cashier is ready.
+4.  Once the order is placed, a cashier has to get a burger from
+    the rack.
+5.  If a burger is not available, a cashier must wait until one is
+    made.
+6.  The cook will always make burgers and place them on the
+    rack.
+7.  The cook will wait if the rack is full.
+8.  There are NO synchronization constraints for a cashier
+    presenting food to the customer.

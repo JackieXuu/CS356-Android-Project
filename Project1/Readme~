@@ -1,0 +1,67 @@
+		CS356 Operating System 
+	Project 1: Android Process Tree
+Name: Zhengtian Xu 		StudentID: 5140309178
+
+--------------------------------------------------
+
+
+SUBMITTED FILES:
+	- Problem Restatement.txt	| Decription of Problem
+	- Readme 					| Readme file
+	- testscript.txt			| test file containing all runs of project
+	- jni
+		-Android.mk 			| makefile for problem 2,3,4
+		-test_ptree.c 			| implementation of problem 2
+		-StudentIDProcess.c 	| implementation of problem 3
+		-BurgerBuddies.c 		| implementation of problem 4
+	- ptree
+		-Makefile 				| makefile for problem 1
+		-ptree.c 				| implementation of problem 1
+
+
+CRITICAL PROCESS TO RUN PROGRAM:
+	- Environment Installation
+		- Install SDK
+		- Setup AVD
+		- Setup NDK
+		- Compile a new kernel
+		- Configure environment variable
+
+	- Code Changed
+		We should define struct prinfo in ~/kernel/goldfish/include/linux/prinfo.h
+		This structure is defined as follows:
+		struct prinfo {
+			long state;					/* current state of process */
+			pid_t pid;					/* process id */
+			pid_t parent_pid;			/* process id of parent */
+			pid_t first_child_pid;  	/* pid of youngest child */
+			pid_t next_sibling_pid;  	/* pid of older sibling */
+			long uid;					/* user id of process owner */
+			char comm[64];				/* name of program executed */
+		};
+
+	- Run AVD
+		emulator -avd OsPrj-5140309178 -kernel ~/kernel/goldfish/arch/arm/boot/zImage -show-kernel
+
+	- Compile program
+		- enter the file directory: cd ~/Prj1+5140309178/jni
+		- use ndk-build to compile program: ndk-build
+		- enter the file directory: cd ~/Prj1+5140309178/ptree
+		- use make to compile program: make
+		- we will get ptree.ko in ptree directory and test_ptree, StudentIDProcess, BBC in /libs/armeabi
+
+	- Upload them into AVD
+		- adb push ptree.ko /data/misc
+		- adb push test_ptree /data/misc
+		- adb push StudentIDProcess /data/misc
+		- adb push BBC /data/misc
+
+	- Install mod
+		- insmod ptree.ko
+
+	- Execute our program
+
+	- Remove mod
+		- rmmod ptree.ko
+
+

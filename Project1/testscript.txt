@@ -1,0 +1,347 @@
+CS356 Operating System 
+Project 1: Android Process Tree
+Name: Zhengtian Xu 		StudentID: 5140309178
+
+--------------------------------------------------
+--------------------------------------------------
+Problem 1 
+Write a new system call in Linux.
+	The system call you write should take two arguments
+	and return the process tree information in a depth-
+	first-search (DFS) order.
+--------------------------------------------------
+--------------------------------------------------
+root@generic:/data/misc # insmod ptree.ko
+module load!
+root@generic:/data/misc # rmmod ptree.ko
+module exit!
+
+
+
+--------------------------------------------------
+--------------------------------------------------
+Problem 2
+Test your new system call
+	1. Write a simple C program which calls ptree
+	2. Print the entire process tree (in DFS order)
+	   using tabs to indent children with respect to
+	   their parents.
+--------------------------------------------------
+--------------------------------------------------
+The first command I enter is: ./test_ptree 30
+
+root@generic:/data/misc # ./test_ptree 30                                      
+init,1,1,0,45,2,0
+	ueventd,45,1,1,0,61,0
+	logd,61,1,1,0,62,1036
+	vold,62,1,1,0,66,0
+	healthd,66,1,1,0,67,0
+	lmkd,67,1,1,0,68,0
+	servicemanager,68,1,1,0,69,1000
+	surfaceflinger,69,1,1,0,71,1000
+	qemud,71,1,1,0,74,0
+	sh,74,1,1,0,75,2000
+	adbd,75,1,1,617,76,0
+		sh,617,1,75,1149,0,0
+			test_ptree,1149,0,617,0,0,0
+	netd,76,1,1,0,77,0
+	debuggerd,77,1,1,0,78,0
+	rild,78,1,1,0,79,1001
+	drmserver,79,1,1,0,80,1019
+	mediaserver,80,1,1,0,81,1013
+	installd,81,1,1,0,82,0
+	keystore,82,1,1,0,83,1017
+	main,83,1,1,241,86,0
+		system_server,241,1,83,0,490,1000
+		externalstorage,490,1,83,0,671,10006
+		putmethod.latin,671,1,83,0,687,10032
+		d.process.media,687,1,83,0,695,10005
+		m.android.phone,695,1,83,0,704,1001
+		droid.launcher3,704,1,83,0,738,10007
+		d.process.acore,738,1,83,0,808,10002
+		m.android.music,808,1,83,0,840,10035
+		droid.deskclock,840,1,83,0,849,10023
+Total amount of processes: 73
+
+The second command I enter is: ./test_ptree 
+
+root@generic:/data/misc # ./test_ptree                                         
+init,1,1,0,45,2,0
+	ueventd,45,1,1,0,61,0
+	logd,61,1,1,0,62,1036
+	vold,62,1,1,0,66,0
+	healthd,66,1,1,0,67,0
+	lmkd,67,1,1,0,68,0
+	servicemanager,68,1,1,0,69,1000
+	surfaceflinger,69,1,1,0,71,1000
+	qemud,71,1,1,0,74,0
+	sh,74,1,1,0,75,2000
+	adbd,75,1,1,617,76,0
+		sh,617,1,75,1148,0,0
+			test_ptree,1148,0,617,0,0,0
+	netd,76,1,1,0,77,0
+	debuggerd,77,1,1,0,78,0
+	rild,78,1,1,0,79,1001
+	drmserver,79,1,1,0,80,1019
+	mediaserver,80,1,1,0,81,1013
+	installd,81,1,1,0,82,0
+	keystore,82,1,1,0,83,1017
+	main,83,1,1,241,86,0
+		system_server,241,1,83,0,490,1000
+		externalstorage,490,1,83,0,671,10006
+		putmethod.latin,671,1,83,0,687,10032
+		d.process.media,687,1,83,0,695,10005
+		m.android.phone,695,1,83,0,704,1001
+		droid.launcher3,704,1,83,0,738,10007
+		d.process.acore,738,1,83,0,808,10002
+		m.android.music,808,1,83,0,840,10035
+		droid.deskclock,840,1,83,0,849,10023
+		ndroid.systemui,849,1,83,0,922,10013
+		id.printspooler,922,1,83,0,937,10040
+		.quicksearchbox,937,1,83,0,960,10042
+		ndroid.settings,960,1,83,0,974,1000
+		ndroid.calendar,974,1,83,0,993,10019
+		viders.calendar,993,1,83,0,1014,10001
+		ndroid.keychain,1014,1,83,0,1044,1000
+		.android.dialer,1044,1,83,0,1062,10004
+		gedprovisioning,1062,1,83,0,1084,10008
+		m.android.email,1084,1,83,0,1100,10027
+		ndroid.exchange,1100,1,83,0,0,10029
+	gatekeeperd,86,1,1,0,91,1000
+	perfprofd,91,1,1,0,92,0
+	fingerprintd,92,1,1,0,0,1000
+kthreadd,2,1,0,3,0,0
+	ksoftirqd/0,3,1,2,0,6,0
+	khelper,6,1,2,0,7,0
+	sync_supers,7,1,2,0,8,0
+	bdi-default,8,1,2,0,9,0
+	kblockd,9,1,2,0,10,0
+	rpciod,10,1,2,0,11,0
+	kworker/0:1,11,1,2,0,12,0
+	kswapd0,12,1,2,0,13,0
+	fsnotify_mark,13,1,2,0,14,0
+	crypto,14,1,2,0,25,0
+	kworker/u:1,25,1,2,0,30,0
+	mtdblock0,30,1,2,0,35,0
+	mtdblock1,35,1,2,0,40,0
+	mtdblock2,40,1,2,0,41,0
+	binder,41,1,2,0,42,0
+	deferwq,42,1,2,0,43,0
+	kworker/u:2,43,1,2,0,44,0
+	mmcqd/0,44,1,2,0,47,0
+	jbd2/mtdblock0-,47,1,2,0,48,0
+	ext4-dio-unwrit,48,1,2,0,51,0
+	flush-31:1,51,1,2,0,53,0
+	jbd2/mtdblock1-,53,1,2,0,54,0
+	ext4-dio-unwrit,54,1,2,0,59,0
+	jbd2/mtdblock2-,59,1,2,0,60,0
+	ext4-dio-unwrit,60,1,2,0,90,0
+	kauditd,90,1,2,0,165,0
+	kworker/0:2,165,1,2,0,831,0
+	flush-179:0,831,1,2,0,0,0
+Total amount of processes: 73
+
+
+
+
+--------------------------------------------------
+--------------------------------------------------
+Problem 3
+1.  Generate a new process and output
+	“StudentIDParent” with PID, then
+	generates its children process output
+	“StudentIDChild” with PID.
+2.  Use execl to execute ptree in the child
+	process,show the relationship between
+	above two process.
+--------------------------------------------------
+--------------------------------------------------
+root@generic:/data/misc # ./StudentIDParent                                    
+5140309178Parent: 1144
+5140309178Child: 1145
+init,1,1,0,45,2,0
+	ueventd,45,1,1,0,61,0
+	logd,61,1,1,0,62,1036
+	vold,62,1,1,0,66,0
+	healthd,66,1,1,0,67,0
+	lmkd,67,1,1,0,68,0
+	servicemanager,68,1,1,0,69,1000
+	surfaceflinger,69,1,1,0,71,1000
+	qemud,71,1,1,0,74,0
+	sh,74,1,1,0,75,2000
+	adbd,75,1,1,617,76,0
+		sh,617,1,75,1144,0,0
+			5140309178Parent,1144,1,617,1145,0,0
+				test_ptree,1145,0,1144,0,0,0
+	netd,76,1,1,0,77,0
+	debuggerd,77,1,1,0,78,0
+	rild,78,1,1,0,79,1001
+	drmserver,79,1,1,0,80,1019
+	mediaserver,80,1,1,0,81,1013
+	installd,81,1,1,0,82,0
+	keystore,82,1,1,0,83,1017
+	main,83,1,1,241,86,0
+		system_server,241,1,83,0,490,1000
+		externalstorage,490,1,83,0,671,10006
+		putmethod.latin,671,1,83,0,687,10032
+		d.process.media,687,1,83,0,695,10005
+		m.android.phone,695,1,83,0,704,1001
+		droid.launcher3,704,1,83,0,738,10007
+		d.process.acore,738,1,83,0,808,10002
+		m.android.music,808,1,83,0,840,10035
+		droid.deskclock,840,1,83,0,849,10023
+		ndroid.systemui,849,1,83,0,922,10013
+		id.printspooler,922,1,83,0,937,10040
+		.quicksearchbox,937,1,83,0,960,10042
+		ndroid.settings,960,1,83,0,974,1000
+		ndroid.calendar,974,1,83,0,993,10019
+		viders.calendar,993,1,83,0,1014,10001
+		ndroid.keychain,1014,1,83,0,1044,1000
+		.android.dialer,1044,1,83,0,1062,10004
+		gedprovisioning,1062,1,83,0,1084,10008
+		m.android.email,1084,1,83,0,1100,10027
+		ndroid.exchange,1100,1,83,0,0,10029
+	gatekeeperd,86,1,1,0,91,1000
+	perfprofd,91,1,1,0,92,0
+	fingerprintd,92,1,1,0,0,1000
+kthreadd,2,1,0,3,0,0
+	ksoftirqd/0,3,1,2,0,6,0
+	khelper,6,1,2,0,7,0
+	sync_supers,7,1,2,0,8,0
+	bdi-default,8,1,2,0,9,0
+	kblockd,9,1,2,0,10,0
+	rpciod,10,1,2,0,11,0
+	kworker/0:1,11,1,2,0,12,0
+	kswapd0,12,1,2,0,13,0
+	fsnotify_mark,13,1,2,0,14,0
+	crypto,14,1,2,0,25,0
+	kworker/u:1,25,1,2,0,30,0
+	mtdblock0,30,1,2,0,35,0
+	mtdblock1,35,1,2,0,40,0
+	mtdblock2,40,1,2,0,41,0
+	binder,41,1,2,0,42,0
+	deferwq,42,1,2,0,43,0
+	kworker/u:2,43,1,2,0,44,0
+	mmcqd/0,44,1,2,0,47,0
+	jbd2/mtdblock0-,47,1,2,0,48,0
+	ext4-dio-unwrit,48,1,2,0,51,0
+	flush-31:1,51,1,2,0,53,0
+	jbd2/mtdblock1-,53,1,2,0,54,0
+	ext4-dio-unwrit,54,1,2,0,59,0
+	jbd2/mtdblock2-,59,1,2,0,60,0
+	ext4-dio-unwrit,60,1,2,0,90,0
+	kauditd,90,1,2,0,165,0
+	kworker/0:2,165,1,2,0,831,0
+	flush-179:0,831,1,2,0,0,0
+Total amount of processes: 74
+
+
+	We can see that the pid of the parent process is 1144 and the pid of the child process id 1145.
+	The ptree system call shows that  
+				5140309178Parent,1144,1,617,1145,0,0
+					test_ptree,1145,0,1144,0,0,0
+	It can show the relationship of parent process and child process.
+
+
+
+
+--------------------------------------------------
+--------------------------------------------------
+Problem 4 Burger Buddies Problem
+1. Cooks, Cashiers, and Customers are each modeled as athread.
+   Cashiers sleep until a customer is present.
+2. A Customer approaching a cashier can start the order
+   process.
+3. A Customer cannot order until the cashier is ready.
+4. Once the order is placed, a cashier has to get a burger from
+   the rack.
+5. If a burger is not available, a cashier must wait until one is
+   made.
+6. The cook will always make burgers and place them on the
+   rack.
+7. The cook will wait if the rack is full.
+8. There are NO synchronization constraints for a cashier
+   presenting food to the customer.
+--------------------------------------------------
+--------------------------------------------------
+root@generic:/data/misc # ./BBC 2 4 20 5
+Cooks[2], Cashiers[4], Customers[20]
+Begin run.
+Customer[19] come.
+Customer[1] come.
+Cashier[4] accept an order.
+Cook[1] make a burger.
+Customer[11] come.
+Cashier[3] accept an order.
+Cashier[2] accept an order.
+Cook[1] make a burger.
+Cashier[4] take a burger to customer
+Cashier[2] take a burger to customer
+Customer[12] come.
+Cook[1] make a burger.
+Cashier[3] take a burger to customer
+Customer[7] come.
+Customer[13] come.
+Cashier[1] accept an order.
+Cashier[4] accept an order.
+Cook[2] make a burger.
+Customer[9] come.
+Customer[14] come.
+Cashier[2] accept an order.
+Cashier[4] take a burger to customer
+Cashier[3] accept an order.
+Customer[10] come.
+Cashier[4] accept an order.
+Customer[16] come.
+Customer[2] come.
+Cook[1] make a burger.
+Cashier[1] take a burger to customer
+Cook[1] make a burger.
+Cashier[2] take a burger to customer
+Cashier[1] accept an order.
+Customer[6] come.
+Cook[2] make a burger.
+Cashier[3] take a burger to customer
+Cashier[2] accept an order.
+Customer[17] come.
+Customer[8] come.
+Customer[18] come.
+Customer[4] come.
+Customer[3] come.
+Cashier[3] accept an order.
+Cook[2] make a burger.
+Cashier[4] take a burger to customer
+Cashier[4] accept an order.
+Customer[15] come.
+Customer[5] come.
+Cook[1] make a burger.
+Cashier[1] take a burger to customer
+Cashier[1] accept an order.
+Customer[20] come.
+Cook[2] make a burger.
+Cashier[2] take a burger to customer
+Cook[2] make a burger.
+Cashier[3] take a burger to customer
+Cook[2] make a burger.
+Cashier[4] take a burger to customer
+Cashier[4] accept an order.
+Cashier[2] accept an order.
+Cashier[3] accept an order.
+Cook[1] make a burger.
+Cashier[1] take a burger to customer
+Cashier[1] accept an order.
+Cook[1] make a burger.
+Cashier[2] take a burger to customer
+Cook[2] make a burger.
+Cashier[3] take a burger to customer
+Cashier[2] accept an order.
+Cook[1] make a burger.
+Cashier[4] take a burger to customer
+Cashier[3] accept an order.
+Cook[1] make a burger.
+Cashier[1] take a burger to customer
+Cashier[4] accept an order.
+Process end!
+
+
+
