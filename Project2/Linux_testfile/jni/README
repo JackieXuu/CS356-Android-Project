@@ -9,7 +9,7 @@ Linux test file:
 	What they print is the execution time of themselves.
 
 	-test_file.c 			| 1 or 2 parameters which respectively represents scheduling policy and priority.
-							        If enter only one parameter, the default priority is the maximal priority.
+					  If enter only one parameter, the default priority is the maximal priority.
 
 	-test_file_NORMAL		| no parameter, with SCHED_NORMAL and its priority is 0.
 
