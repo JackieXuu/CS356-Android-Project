@@ -1,6 +1,3 @@
-CS356 Operating System 
-Project 1: Android Process Tree
-Name: Zhengtian Xu 		StudentID: 5140309178
 
 --------------------------------------------------
 --------------------------------------------------
