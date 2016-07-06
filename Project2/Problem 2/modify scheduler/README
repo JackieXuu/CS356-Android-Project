@@ -1,8 +1,3 @@
-		CS356 Operating System 
-	Project 2: Android Scheduler
-Name: Zhengtian Xu 		StudentID: 5140309178
-
---------------------------------------------------
 
 Modify Scheduler:
 	-fork.c 		| The first prolblem asks us to modify the default scheduling policy 
