@@ -1,3 +1,3 @@
 # CS356-Android-Project
 
-    Two Projects For CS356
+Two Projects For CS356
